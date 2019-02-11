@@ -1,4 +1,4 @@
-@extends('layout_back')
+@extends('template')
 @section('title')
   <h1>
     Administration des Docs
@@ -12,13 +12,6 @@
   <div class="row">
     <div class="col-md-12">
       <div class="box">
-        <div class="box-header with-border">
-
-          {!! Form::open(['route' => "document.create", 'method' => 'get']) !!}
-          <button type="submit" class=" btn btn-success ">Nouveau document</button>
-          {!! Form::close() !!}</div>
-
-          <div class="box-body">
             <table>
               <thead class="panel-body">
                 <tr>

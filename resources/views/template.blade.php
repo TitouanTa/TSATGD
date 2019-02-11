@@ -165,7 +165,7 @@ URL: http://gettemplates.co
 				<h1 id="titre_sous_logo" class="animate-box" data-animate-effect="fadeInUp" >
 					<span style="background:#d2007b63; padding-left:10px ; padding-right:10px">
 					@section("tittle")
-						Pratiquez le tennis!
+						Bienvenue sur le site officiel du Tavaux Saint Aubin du Grand Dole !
 					@show
 					</span>
 				</h1>
@@ -368,8 +368,15 @@ URL: http://gettemplates.co
 				<div class="modal-footer">
 					<div class="modal-body">
 						<div class="form-row">
+						@if (Auth::user()->est_admin==1)
 							<div class="col-md-6">
-								<a class="btn btn_modal" href="{{route('admin.dashboard')}}" style="visibility: {{$statutAfficher}}">Vers le mode administrateur</a>
+								<a class="btn btn_modal" href="{{route('admin.dashboard')}}">Vers le mode administrateur</a>
+							</div>
+							<div class="col-md-6">
+								<a class="btn btn_modal" href="{{route('document.index')}}" >Voir documents</a>
+							@elseif (Auth::user()->valider==1)
+								<a class="btn btn_modal" href="{{route('consultation-documents')}}" >Voir documents</a>
+							@endif
 							</div>
 						</div>
 						<div class="form-row">

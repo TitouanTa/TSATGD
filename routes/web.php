@@ -24,6 +24,7 @@ Route::get('competition','PagesController@competition')->name("competition");
 Route::get('contact','PagesController@contact')->name("contact");
 Route::post('store-devenir-membre', 'PagesController@storeFront')->name('membre.store');
 Route::post('message-envoyer', 'MessageController@send')->name('message.send');
+Route::get('consultation-documents', 'DocumentController@visu')->name('consultation-documents');
 
 //Affichage de l'album au clic sur la miniature dans galerie
 Route::get('galerie/{album}/{titreAlbum}','PagesController@album')->name('galerie.album');
@@ -62,7 +63,6 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     //Route::resource('photo', 'PhotoController');
     Route::resource('album', 'AlbumController');
     Route::resource('partenaire', 'PartenaireController');
-    Route::put('album/change-statut/{id}','AlbumController@changeStatut')->name('changeStatut');
 
     // Utilisateurs / Profil
     //
@@ -101,7 +101,7 @@ Route::group(['prefix' => 'admin','middleware'=>'admin'], function() {
     Route::get('comite/addUser/{id}', 'ComiteController@addUser')->name('comite.add_user');
     Route::get('comite/deleteUserStatut/{id}', 'ComiteController@deleteUserStatut')->name('comite.delete_user_statut');
     Route::put('comite/addUserStatut/{id}', 'ComiteController@addUserStatut')->name('comite.add_user_statut');
-    Route::delete('comite/deleteStatut/{id}', 'Comite@deleteStatut')->name('deleteStatut');
+    Route::delete('comite/deleteStatut/{id}', 'ComiteController@deleteStatut')->name('deleteStatut');
 
     // Menu
     //

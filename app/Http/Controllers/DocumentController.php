@@ -16,13 +16,8 @@ class DocumentController extends Controller
   */
   public function index()
   {
-
-
-    $lesDocs = Document::Where("user_id", "=",null)->get();
-
-
-      return view('admin.document.index')
-      ->with('tab_docs',$lesDocs);
+    $lesDocs = Document::all();
+    return view('admin.document.index')->with('tab_docs',$lesDocs);
   }
 
 
@@ -33,9 +28,6 @@ class DocumentController extends Controller
 
   public function create()
   {
-    $user = Document::all();
-
-    //dd($user);
     return view('admin.document.create');
   }
 
@@ -49,30 +41,18 @@ class DocumentController extends Controller
   */
   public function store(Request $request)
   {
-    $request->session()->flash('success', 'Le fichier à été Ajouté !');
+    $request->session()->flash('success', 'Le fichier à été ajouté !');
 
     $document = new Document();
-
-
-    $document->user_id = $request->get('user_id');
-
-    $document->titre = $request->get('nom');
-
+    $document->titre = $request->get('titre');
     $contenu = $request->file('document');
-
-    $documentname = time().'.'.$contenu->getClientOriginalName();
-
-
-
+    $documentname = time().'.'.$contenu->getClientOriginalExtension();
     $destinationPath = public_path('doc/');
-
     $contenu->move($destinationPath, $documentname);
-
     $document->contenu = $documentname;
-
     $document->save();
 
-    return redirect()->route("admin.document");
+    return redirect()->route("document.index");
   }
 
 
@@ -84,11 +64,9 @@ class DocumentController extends Controller
   * @param  int  $id
   * @return \Illuminate\Http\Response
   */
-  public function show($user_id)
+  public function show($id)
   {
-    $tab_docs = Document::find($user_id);
-
-
+    $tab_docs = Document::find($id);
     return view('site.document.show', compact('tab_docs'));
   }
 
@@ -124,29 +102,18 @@ class DocumentController extends Controller
   */
   public function destroy(Request $request, $id)
   {
-    $request->session()->flash('success', 'Le doc à été Supprimé !');
+    $request->session()->flash('success', 'Le document à été supprimé !');
 
     $doc = Document::find($id);
-
     File::delete("doc/" . $doc->fichier);
-
-
     $doc->delete();
 
     return redirect()->route("document.index");
   }
 
-  public function adestroy(Request $request, $id)
+  public function visu()
   {
-    $request->session()->flash('success', 'Le doc à été Supprimé !');
-
-    $doc = Document::find($id);
-
-    File::delete("doc/" . $doc->fichier);
-
-
-    $doc->delete();
-
-    return redirect()->route("document.home");
+    $lesDocs = Document::all();
+    return view('front.consultation_documents')->with('tab_docs',$lesDocs);
   }
 }
