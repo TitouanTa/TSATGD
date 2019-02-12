@@ -22,7 +22,7 @@ CKEDITOR.editorConfig = function( config ) {
 		{ name: 'about', groups: [ 'about' ] }
 	];
 
-	config.removeButtons = 'About,ShowBlocks,Flash,PageBreak,Iframe,Anchor,Language,BidiRtl,BidiLtr,Checkbox,Form,HiddenField,SelectAll,PasteFromWord,Source';
+	config.removeButtons = 'Font,About,ShowBlocks,Flash,PageBreak,Iframe,Anchor,Language,BidiRtl,BidiLtr,Checkbox,Form,HiddenField,SelectAll,PasteFromWord,Source';
 	
 	//Ajouté pour l'upload d'images
 	config.filebrowserImageBrowseUrl = '/elfinder/ckeditor';

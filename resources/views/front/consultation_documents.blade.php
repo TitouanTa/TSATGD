@@ -1,52 +1,41 @@
-@extends('template')
-@section('title')
-  <h1>
-    Administration des Docs
-    <small>- Rechercher, Modifier et supprimer des docs</small>
-  </h1>
+@extends("template")
+
+@section("tittle")
+Documents
 @stop
-@section('content')
 
-
-  <!-- Main content -->
-  <div class="row">
-    <div class="col-md-12">
-      <div class="box">
-            <table>
+@section("content")
+<div class="gtco-section">
+        <div class="gtco-container">
+            <div class="row row-pb-md">
+               
+                <div class="col-md-5 col-md-push-1 animate-box">
+                   
+                    <div class="gtco-contact-info">
+                  
+                    <h2 >Documents en libre consultation</h2>
+               <table>
               <thead class="panel-body">
                 <tr>
                   <th style="text-align:center">Titre</th>
                   <th style="text-align:center">Fichier</th>
-                  <th style="text-align:center">Action</th>
-
+               
                 </tr>
 
               </thead>
               <tbody>
 
-                <?php  $c = true ?>
+
 
                 @foreach ($tab_docs as $unDoc)
 
 
 
-                  <?php echo '<tr' . (($c = !$c) ? ' class="odd"' : ' class="even"') . ">"; ?>
-                  <td class="col-md-1 col-md-offset-4 ">
+                 <td class="col-md-1 col-md-offset-4 ">
                     {{ $unDoc["titre"] }}
                   </td >
                   <td class="col-md-5" >
-                    <center><objet  data="{{ url('doc/') ."/". $unDoc["fichier"] }}" alt="img{{ $unDoc["id"] }}" ><a href="{{ url('doc/') ."/". $unDoc["fichier"] }}" target="_blank" >{{ $unDoc["fichier"]}}</a> </objet></center>
-                  </td>
-                  <td class="col-md-1">
-                    <div class="row">
-
-
-                      <div class="col-md-4">
-                        {!! Form::open(['route' => ["document.destroy", $unDoc->id], 'method' => 'delete', 'id' => "form".$unDoc->id]) !!}
-                        <button type="submit" id="{{ $unDoc->id }}" class="jsDeleteButton btn btn-danger btn-circle "<i class="fa fa-times"> </i>Supprimer</button>
-                        {!! Form::close() !!}
-                      </div>
-                    </div>
+                      <a href="{{ url('doc/') ."/". $unDoc["contenu"] }}" target="_blank" >{{ $unDoc["contenu"]}}</a> 
                   </td>
                 </tr>
 
@@ -55,9 +44,15 @@
           </table>
 
 
-        </div>
-      </div>
-    </div>
-  </div>
+                    </div>
 
-@endsection
+
+                </div>
+            </div>
+            </div>
+           
+        </div>
+
+     
+
+@stop

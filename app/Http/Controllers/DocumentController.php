@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Image;
 Use File;
 use Auth;
+use Validator;
 
 class DocumentController extends Controller
 {
@@ -41,8 +42,17 @@ class DocumentController extends Controller
   */
   public function store(Request $request)
   {
+    $validator = Validator::make($request->all(), [
+      'titre' => 'required',
+      'document' => 'required|mimes:pdf',
+  ]);
+  if ($validator->fails()) {
+      return redirect(route('document.create'))
+                  ->withErrors($validator)
+                  ->withInput();
+  }
     $request->session()->flash('success', 'Le fichier à été ajouté !');
-
+  
     $document = new Document();
     $document->titre = $request->get('titre');
     $contenu = $request->file('document');
@@ -53,6 +63,10 @@ class DocumentController extends Controller
     $document->save();
 
     return redirect()->route("document.index");
+          
+
+  
+    
   }
 
 
