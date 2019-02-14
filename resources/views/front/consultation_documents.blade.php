@@ -1,58 +1,66 @@
 @extends("template")
 
 @section("tittle")
-Documents
+Espace membre
 @stop
 
 @section("content")
-<div class="gtco-section">
-        <div class="gtco-container">
-            <div class="row row-pb-md">
-               
-                <div class="col-md-5 col-md-push-1 animate-box">
-                   
-                    <div class="gtco-contact-info">
-                  
-                    <h2 >Documents en libre consultation</h2>
-               <table>
-              <thead class="panel-body">
-                <tr>
-                  <th style="text-align:center">Titre</th>
-                  <th style="text-align:center">Fichier</th>
-               
-                </tr>
+<div class="container">
+  <div class="row">
+    <div class="text-center col-md-12">
+      <h2>Album : <b></b></h2><br />
+    </div>
+    @php($x = 0)
 
-              </thead>
+    <div class="gallery_product col-lg-3 col-md-3 col-sm-4 col-xs-3 pointer">
+      <div class="overlay-image">
+        <img src="" class="img-responsive" style="height: 265px; width:265px;">
+        <div class="hover" id="image{{$x}}" data-toggle="modal" data-target="#imagemodal{{$x}}">
+        <div class="text">
+          <span class="ti-fullscreen"></span>
+        </div>  
+      </div>
+  </div>
+</div>
+
+
+<div class="feature-center animate-box fadeInLeft animated-fast" data-animate-effect="fadeInLeft">
+						
+		<div class="col-md-8 col-md-offset-2 text-center gtco-heading">
+				<h2>Consultation des documents</h2>
+		</div>
+			  <div class="row">
+          <div class="text-center col-md-12">
+              <table>
+                <thead class="panel-body">
+                  <tr>
+                    <th>&nbsp</th>
+                    <th style="text">Titre</th>
+                    <th style="text">Fichier</th>
+                  </tr>
+
+                </thead>
               <tbody>
-
-
-
-                @foreach ($tab_docs as $unDoc)
-
-
-
-                 <td class="col-md-1 col-md-offset-4 ">
+              @foreach ($tab_docs as $unDoc)
+                <tr>
+                <td>
+                  <span class="icon">
+							      <i class="ti-ruler-pencil"></i>
+						      </span>
+                </td>
+                <td class="panel-body">
                     {{ $unDoc["titre"] }}
-                  </td >
-                  <td class="col-md-5" >
-                      <a href="{{ url('doc/') ."/". $unDoc["contenu"] }}" target="_blank" >{{ $unDoc["contenu"]}}</a> 
-                  </td>
+                </td>
+                <td class="panel-body" >
+                    <a href="{{ url('doc/') ."/". $unDoc["contenu"] }}" target="_blank" >{{ $unDoc["contenu"]}}</a> 
+                </td>
                 </tr>
-
               @endforeach
-            </tbody>
+              </tbody>
           </table>
-
-
-                    </div>
-
-
-                </div>
-            </div>
-            </div>
-           
-        </div>
-
-     
+          </div>
+          </div>
+			</div>
+	</div>
 
 @stop
