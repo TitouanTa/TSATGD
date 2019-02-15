@@ -162,6 +162,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        Anhskohbo\NoCaptcha\NoCaptchaServiceProvider::class,
 
         /*
         *Package Google Map
@@ -247,6 +248,7 @@ return [
         'Mapper' => Cornford\Googlmapper\Facades\MapperFacade::class,
          'Image' => Intervention\Image\Facades\Image::class,
          'Carbon' => Carbon\Carbon::class,
+        'NoCaptcha' => Anhskohbo\NoCaptcha\Facades\NoCaptcha::class,
 
     ],
 
