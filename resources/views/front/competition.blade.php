@@ -44,15 +44,38 @@
     <div id="{{ $contenu->sousmenus[0]->slug }}" class="gtco-section-first">
         <div id="gtco-portfolio">
             <div class="gtco-container">
-          <div class="row">
+             <div class="row">
               <div class="col-md-8 col-md-offset-2 text-justify gtco-heading animate-box">
                <h2 class="text-center">{{ $contenu->sousmenus[0]->titre }}</h2>
                {!! $contenu->sousmenus[0]->contenu !!}
-              </div>
-          </div>
-            </div>
-        </div>
-      </div>
+               <div class="row"> 
+                    @foreach($lesTournois as $tournoi)
+                        <div class="col-md-4">
+                          <div class="panel panel-default">
+                            <div class="panel-body panelTournoi">
+                              <div class="feature-left animate-box" data-animate-effect="fadeInLeft">
+                                  <span class="icon iconTournoi">
+                                    <i class="ti-cup"></i>
+                                  </span>
+                                  <h3><b>{{ $tournoi->titre }}</b></h3>
+                                  <p><h4>Début du tournoi: {{ Carbon::parse($tournoi->dte_debut)->format("d/m/Y") }}</h4></p>
+                                  <p><h4>Fin d'inscription : {{ Carbon::parse($tournoi->dte_fin_inscription)->format("d/m/Y") }}</h4></p>
+                                  <p><h4>{{ str_limit(strip_tags($tournoi->commentaire) , 45, '... Voir plus') }}</h4></p>
+                                  <p><button type="submit" class="btn btn-default buttonSubmitTournoi">S'inscrire</button></p>
+                              </div>
+                            </div>  
+                            </div>
+                          </div>
+                        @endforeach 
+                        </div>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+               </div>
+
+
+
       <div id="{{ $contenu->sousmenus[1]->slug }}" class="gtco-section-first">
         <div id="gtco-counter" >
           <div class="gtco-container">

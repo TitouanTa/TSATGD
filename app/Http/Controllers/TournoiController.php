@@ -39,7 +39,7 @@ class TournoiController extends Controller
    {
 
        $tournoi = new Tournoi();
-
+       $tournoi->titre = $request->get('titre');
        $tournoi->dte_debut = $request->get('dte_debut');
        $tournoi->dte_fin = $request->get('dte_fin');
        $tournoi->dte_fin_inscription = $request->get('dte_fin_inscription');

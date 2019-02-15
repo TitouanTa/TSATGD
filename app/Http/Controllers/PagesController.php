@@ -14,6 +14,7 @@ use App\Models\User;
 use App\Models\Message;
 use App\Models\Rencontre;
 use App\Models\Menu;
+use App\Models\Tournoi;
 use App\Mail\ContactEmail;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\ContactFormRequest;
@@ -41,9 +42,10 @@ class PagesController extends Controller {
         ->with("tab_comites",$tab_comites);
     }
     public function competition() {
+        $lesTournois=Tournoi::all();
 
         $contenu=Menu::where("slug","competition")->first();
-        return view('front.competition')->with("contenu",$contenu);
+        return view('front.competition')->with("contenu",$contenu)->with("lesTournois",$lesTournois);
     }
     public function infoPratique() {
 

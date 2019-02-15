@@ -34,6 +34,7 @@
                             <thead class="thead-inverse">
                                 <tr>
                                     <th style="width: 10px">#</th>
+                                    <th>Titre</th>
                                     <th>Date de début</th>
                                     <th>Date de fin</th>
                                     <th>Commentaire</th>
@@ -45,6 +46,9 @@
                                 <tr>
                                     <td class="col-md-1">
                                         {{ $unTournoi["id"] }}
+                                    </td>
+                                    <td class="col-md-1">
+                                        {{ $unTournoi["titre"] }}
                                     </td>
                                     <td class="col-md-3">
                                         {{ Carbon::parse($unTournoi->dte_debut)->format("d/m/Y") }}
