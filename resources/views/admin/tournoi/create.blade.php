@@ -25,7 +25,10 @@
             {!! Form::open(['route' => "tournoi.store", 'method' => 'post']) !!}
                 <div class="box-header">
                     <h3 class="box-title">  </h3>
-
+                    <div class="form-group">
+                        <label>Titre :  </label>
+                        <input class="form-control" placeholder="Titre :" name="titre">
+                    </div>
                     <div class="form-group">
                         <label>Date du début du tournoi :  </label>
                         <input type ="date" class="form-control" placeholder="Date :" name="dte_debut">

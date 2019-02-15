@@ -109,51 +109,57 @@ URL: http://gettemplates.co
 					</div>
 					<div class="col-sm-10  col-xs-10 text-right menu-1">
 						<ul>
-							<li class="active"><a id="li_menu0" href="{{route('accueil')}}">Accueil</a></li>
-							<li class="has-dropdown">
+							<li class="{{Request::is('accueil') || Request::is('/')?'active':null}}">
+								<a id="li_menu0" href="{{route('accueil')}}">Accueil</a>
+							</li>
+							<li class="has-dropdown {{Request::is('club')?'active':null}}">
 								<a  id="li_menu1" href="{{route('club')}}">Club</a>
 								<ul class="dropdown">
-									<li><a href="{{route('club')}}">Historique</a></li>
-									<li><a href="{{route('club')}}">Comité</a></li>
-									<li><a href="{{route('club')}}">Installations</a></li>
-									<li><a href="{{route('club')}}">Partenaires</a></li>
+									<li><a href="{{route('club')}}#historique">Historique</a></li>
+									<li><a href="{{route('club')}}#comite">Comité</a></li>
+									<li><a href="{{route('club')}}#installations">Installations</a></li>
+									<li><a href="{{route('club')}}#partenaires">Partenaires</a></li>
 								</ul>
 							</li>
-							<li class="has-dropdown">
-								<a id="li_menu2" href="{{route('competition')}}">Compétitions (à venir)</a>
+							<li class="has-dropdown {{Request::is('competition')?'active':null}}">
+								<a id="li_menu2" href="{{route('competition')}}">Compétitions</a>
 								<ul class="dropdown">
-									<li><a href="{{route('competition')}}">Tournois (à venir)</a></li>
-									<li><a href="{{route('competition')}}">Equipes (à venir)</a></li>
-									<li><a href="{{route('competition')}}">Arbitres (à venir)</a></li>
-									<li><a href="{{route('competition')}}">Résultats (à venir)</a></li>
+									<li><a href="{{route('competition')}}#tournoi">Tournois</a></li>
+									<li><a href="{{route('competition')}}#equipe">Equipes (à venir)</a></li>
+									<li><a href="{{route('competition')}}#arbitres">Arbitres (à venir)</a></li>
+									<li><a href="{{route('competition')}}#resultats">Résultats (à venir)</a></li>
 								</ul>
 							</li>
-							<li class="has-dropdown">
+							<li class="has-dropdown {{Request::is('info-pratique')?'active':null}}">
 								<a id="li_menu3"  href="{{route('info-pratique')}}">Infos Pratiques</a>
 								<ul class="dropdown">
-									<li><a href="{{route('info-pratique')}}">Horaires</a></li>
-									<li><a href="{{route('info-pratique')}}">Devenir Membre</a></li>
-									<li><a href="{{route('info-pratique')}}">Réservation</a></li>
-									<li><a href="{{route('info-pratique')}}">Tarifs</a></li>
+									<li><a href="{{route('info-pratique')}}#horaires">Horaires</a></li>
+									<li><a href="{{route('info-pratique')}}#devenir-membre">Devenir Membre</a></li>
+									<li><a href="{{route('info-pratique')}}#reservations">Réservation</a></li>
+									<li><a href="{{route('info-pratique')}}#tarifs">Tarifs</a></li>
 								</ul>
 							</li>
-							<li class="has-dropdown">
+							<li class="has-dropdown {{Request::is('enseignement')?'active':null}}">
 								<a id="li_menu4" href="{{route('enseignement')}}">L'enseignement</a>
 								<ul class="dropdown">
-									<li><a href="{{route('enseignement')}}">Equipe pédagogique</a></li>
-									<li><a href="{{route('enseignement')}}">Ecole de tennis</a></li>
-									<li><a href="{{route('enseignement')}}">Cours collectifs</a></li>
-									<li><a href="{{route('enseignement')}}">Stages</a></li>
+									<li><a href="{{route('enseignement')}}#l-equipe-pedagogique">Equipe pédagogique</a></li>
+									<li><a href="{{route('enseignement')}}#l-ecole-de-tennis">Ecole de tennis</a></li>
+									<li><a href="{{route('enseignement')}}#cours-colectifs">Cours collectifs</a></li>
+									<li><a href="{{route('enseignement')}}#les-stages">Stages</a></li>
 								</ul>
 							</li>
-                                                        <li ><a id="li_menu5" href="{{route('galerie')}}">Galerie</a></li>
-							<li><a id="li_menu6" href="{{route('accueil')}}">Liens utiles (à venir)</a></li>
-							<li class="has-dropdown">
+                            <li class="{{Request::is('galerie')?'active':null}}">
+								<a id="li_menu5" href="{{route('galerie')}}">Galerie</a>
+							</li>
+							<li class="{{Request::is('accueil')?'active':null}}">
+								<a id="li_menu6" href="{{route('accueil')}}">Liens utiles (à venir)</a>
+							</li>
+							<li class="has-dropdown {{Request::is('contact')?'active':null}}">
 								<a id="li_menu7" href="{{route('contact')}}">Contact</a>
 								<ul class="dropdown">
-									<li><a  href="{{route('contact')}}">Coordonnées</a></li>
-										<li><a  href="{{route('contact')}}">Nous contacter</a></li>
-										<li><a  href="{{route('contact')}}">Plan d'accès</a></li> 
+									<li><a  href="{{route('contact')}}#coordonnees">Coordonnées</a></li>
+										<li><a  href="{{route('contact')}}#contacter">Nous contacter</a></li>
+										<li><a  href="{{route('contact')}}#plan">Plan d'accès</a></li> 
 								</ul>
 							</li>
 							

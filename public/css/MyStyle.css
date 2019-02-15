@@ -260,3 +260,24 @@ display: none;
     font-size: 19px;
     cursor: pointer;
 }
+@media screen and (max-width : 767px){
+    #titre_sous_logo{
+        display:none;
+    }
+}
+.panelTournoi{
+    height: 500px !important;
+    background-color: #59124E !important;
+    opacity: 0.9;    
+}
+.buttonSubmitTournoi{
+	margin-left: auto !important;
+	margin-right: auto !important;
+    text-align:center !important;
+    color: #FFFFFF !important;
+    background-color: #303841 !important;
+}
+.iconTournoi{
+    padding-right: 45px;
+    padding-top:13px;
+}
