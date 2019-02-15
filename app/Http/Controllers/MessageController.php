@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\SendMessage;
 use Illuminate\Http\Request;
 use App\Models\Message;
+use Illuminate\Support\Facades\Input;
 use Illuminate\Support\Facades\Mail;
+use Validator;
 
 class MessageController extends Controller
 {
@@ -35,33 +38,11 @@ class MessageController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+
+    public function send(SendMessage $request)
     {
-        $message = new Message();
-
-        $message->auteur = $request->get('auteur');
-        $message->contenu = $request->get('contenu');
-        $message->mail = $request->get('mail');
-        $message->telephone = $request->get('telephone');
-
-
-        $message->save();
-        $request->session()->flash('success', 'L\'message à été Ajouté !');
-        return redirect()->route("contact");
-    }
-    public function send(Request $request)
-    {
-        $message = new Message();
-
-        $message->auteur = $request->get('auteur');
-        $message->contenu = $request->get('contenu');
-        $message->mail = $request->get('mail');
-        $message->telephone = $request->get('telephone');
-
-
-        $message->save();
-        $request->session()->flash('success', 'L\'message à été Ajouté !');
-        return redirect()->route("contact");
+        $validation = Message::create(($request)->all());
+        return redirect()->route('contact');
     }
     /**
      * Display the specified resource.
