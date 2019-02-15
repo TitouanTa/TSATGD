@@ -65,6 +65,7 @@ URL: http://gettemplates.co
 	<![endif]-->
 
 </head>
+{!! NoCaptcha::renderJs() !!}
 <body>
 	@if (Session::has('error') || Session::has('errors'))
 		<input type="hidden" value="1" id="checkModal">
