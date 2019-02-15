@@ -5,24 +5,6 @@ Espace membre
 @stop
 
 @section("content")
-<div class="container">
-  <div class="row">
-    <div class="text-center col-md-12">
-      <h2>Album : <b></b></h2><br />
-    </div>
-    @php($x = 0)
-
-    <div class="gallery_product col-lg-3 col-md-3 col-sm-4 col-xs-3 pointer">
-      <div class="overlay-image">
-        <img src="" class="img-responsive" style="height: 265px; width:265px;">
-        <div class="hover" id="image{{$x}}" data-toggle="modal" data-target="#imagemodal{{$x}}">
-        <div class="text">
-          <span class="ti-fullscreen"></span>
-        </div>  
-      </div>
-  </div>
-</div>
-
 
 <div class="feature-center animate-box fadeInLeft animated-fast" data-animate-effect="fadeInLeft">
 						
