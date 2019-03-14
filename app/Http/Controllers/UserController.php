@@ -29,11 +29,9 @@ class UserController extends Controller {
      *
      * @return \Illuminate\Http\Response
      */
-    public function create() {
-        $lesComites = Comite::pluck('statut','id');
-        $lesComites[]=null;
-        return view('admin.user.create')
-                        ->with('lesComites', $lesComites);
+    public function create()
+    {
+        return view('admin.user.create');
     }
 
     /**
@@ -57,30 +55,25 @@ class UserController extends Controller {
         } else {
             $est_joueur = true;
         }
-
         if ($request->get('est_arbitre') == null) {
             $est_arbitre = false;
         } else {
             $est_arbitre = true;
         }
+        $user = new User();
+        $user->nom = $request->get('nom');
+        $user->prenom = $request->get('prenom');
+        $user->email = $request->get('email');
+        $user->telephone = $request->get('telephone');
+        $user->commentaire = $request->get('commentaire');
 
-
-
-
-        User::create([
-            'nom' => $request->get('nom'),
-            'prenom' => $request->get('prenom'),
-            'email' => $request->get('email'),
-            'telephone' => $request->get('telephone'),
-            'password' => bcrypt($request->get('password')),
-            'commentaire' => $request->get('commentaire'),
-            'est_admin' => $est_admin,
-            'est_joueur' => $est_joueur,
-            'est_arbitre' => $est_arbitre,
-            'comite_id' => $request->get('comite'),
-
-
-        ]);
+        if ($request->get('password') !="") {
+            $user->password = bcrypt($request->get('password'));
+        }
+        $user->est_admin = $est_admin;
+        $user->est_joueur = $est_joueur;
+        $user->est_arbitre = $est_arbitre;
+        $user->save();
 
         return redirect()->route("user.index");
     }
